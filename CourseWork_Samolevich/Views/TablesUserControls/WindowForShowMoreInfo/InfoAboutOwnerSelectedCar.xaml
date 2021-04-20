@@ -1,0 +1,33 @@
+﻿<Window x:Class="CourseWork_Samolevich.Views.TablesUserControls.WindowForShowMoreInfo.InfoAboutOwnerSelectedCar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork_Samolevich.Views.TablesUserControls.WindowForShowMoreInfo"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Информация о владельце" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="500" Width="322">
+
+    <Grid Background="#d6d3db" Opacity="0.9">
+        <StackPanel Orientation="Vertical">
+            <!-- Заголовок -->
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="О владельце" FontFamily="Helvetica" FontSize="24" FontWeight="Medium" Margin="0 10 0 20" Foreground="Black" />
+            <!-- Фамилия владельца -->
+            <TextBox Text="{Binding SelectedOwner.SurnameOwner, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Фамилия владельца" materialDesign:HintAssist.HelperText="Фамилия владельца" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Имя владельца -->
+            <TextBox Text="{Binding SelectedOwner.NameOwner, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Имя владельца" materialDesign:HintAssist.HelperText="Имя владельца" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Отчество владельца -->
+            <TextBox Text="{Binding SelectedOwner.PatronymicOwner, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Отчество владельца" materialDesign:HintAssist.HelperText="Отчество владельца" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Прописка -->
+            <TextBox Text="{Binding SelectedOwner.Registration, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Прописка" materialDesign:HintAssist.HelperText="Прописка владельца" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Дата обращения -->
+            <DatePicker SelectedDate="{Binding SelectedOwner.DateOfApplication, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.HelperText="Дата обращения" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Дата рождения -->
+            <DatePicker IsEnabled="False" SelectedDate="{Binding SelectedOwner.DateOfBirthday, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.HelperText="Дата рождения" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <Button Content="Ок" FontSize="14" FontFamily="Helvetica" Foreground="Black" FontWeight="Bold" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="WhiteSmoke" Margin="0 30 0 0" Command="{Binding CloseInfoAboutOwnerCar}"/>
+        </StackPanel>
+    </Grid>
+</Window>

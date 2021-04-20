@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{68D65DAB-944C-48D5-9CC4-70F80365F777}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CourseWork_Samolevich</RootNamespace>
+    <AssemblyName>CourseWork_Samolevich</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=2019.1.3.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.2019.1.3\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.2.4.1361, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.2.4\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=3.1.1.1361, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.3.1.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="EF\Cars.cs" />
+    <Compile Include="EF\CarsDefects.cs" />
+    <Compile Include="EF\Clients.cs" />
+    <Compile Include="EF\Defects.cs" />
+    <Compile Include="EF\Employee.cs" />
+    <Compile Include="EF\Orders.cs" />
+    <Compile Include="EF\Owners.cs" />
+    <Compile Include="EF\Servicess.cs" />
+    <Compile Include="EF\ServiceStationEntities.cs" />
+    <Compile Include="EF\Specialty.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="Services\Interfaces\IPageShow.cs" />
+    <Compile Include="Services\Interfaces\IUserControlShow.cs" />
+    <Compile Include="Services\Interfaces\IWindowShow.cs" />
+    <Compile Include="Services\PageShowService.cs" />
+    <Compile Include="Services\UserControlShowService.cs" />
+    <Compile Include="Services\WindowShowService.cs" />
+    <Compile Include="ViewModels\ApplicationViewModel.cs" />
+    <Compile Include="Views\AuthorizathionScreenPage.xaml.cs">
+      <DependentUpon>AuthorizathionScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CheckoutCarScreenPage.xaml.cs">
+      <DependentUpon>CheckoutCarScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CheckoutScreenPage.xaml.cs">
+      <DependentUpon>CheckoutScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ControlScreenPage.xaml.cs">
+      <DependentUpon>ControlScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainScreenPage.xaml.cs">
+      <DependentUpon>MainScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PickUpOrderPage.xaml.cs">
+      <DependentUpon>PickUpOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectDefectsWindow.xaml.cs">
+      <DependentUpon>SelectDefectsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\UC_CarsTable.xaml.cs">
+      <DependentUpon>UC_CarsTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\UC_ClientTable.xaml.cs">
+      <DependentUpon>UC_ClientTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\UC_DefectsTable.xaml.cs">
+      <DependentUpon>UC_DefectsTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\UC_EmployeeTable.xaml.cs">
+      <DependentUpon>UC_EmployeeTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\UC_OrdersTable.xaml.cs">
+      <DependentUpon>UC_OrdersTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\UC_OwnersTable.xaml.cs">
+      <DependentUpon>UC_OwnersTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\UC_ServicesTable.xaml.cs">
+      <DependentUpon>UC_ServicesTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\UC_SpecialtyTable.xaml.cs">
+      <DependentUpon>UC_SpecialtyTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForAdd\AddToDefectWindow.xaml.cs">
+      <DependentUpon>AddToDefectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForAdd\AddToEmployeeWindow.xaml.cs">
+      <DependentUpon>AddToEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForAdd\AddToServicessWindow.xaml.cs">
+      <DependentUpon>AddToServicessWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForEdit\EditCarWindow.xaml.cs">
+      <DependentUpon>EditCarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForEdit\EditClientWindow.xaml.cs">
+      <DependentUpon>EditClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForEdit\EditEmployeeWindow.xaml.cs">
+      <DependentUpon>EditEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForEdit\EditOwnerWindow.xaml.cs">
+      <DependentUpon>EditOwnerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForEdit\EditServicesWindow.xaml.cs">
+      <DependentUpon>EditServicesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForShowMoreInfo\InfoAboutClientSelectedCar.xaml.cs">
+      <DependentUpon>InfoAboutClientSelectedCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForShowMoreInfo\InfoAboutOwnerSelectedCar.xaml.cs">
+      <DependentUpon>InfoAboutOwnerSelectedCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForShowMoreInfo\ListCarSelectedClient.xaml.cs">
+      <DependentUpon>ListCarSelectedClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForShowMoreInfo\ListDefectsSelectedCar.xaml.cs">
+      <DependentUpon>ListDefectsSelectedCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForShowMoreInfo\ListOrdersSelectedClient.xaml.cs">
+      <DependentUpon>ListOrdersSelectedClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForShowMoreInfo\QueriesWindow.xaml.cs">
+      <DependentUpon>QueriesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_1.xaml.cs">
+      <DependentUpon>UC_Query_1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_2.xaml.cs">
+      <DependentUpon>UC_Query_2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_4.xaml.cs">
+      <DependentUpon>UC_Query_4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_5.xaml.cs">
+      <DependentUpon>UC_Query_5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_6.xaml.cs">
+      <DependentUpon>UC_Query_6.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\StyleForControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AuthorizathionScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CheckoutCarScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CheckoutScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ControlScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PickUpOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectDefectsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\UC_CarsTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\UC_ClientTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\UC_DefectsTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\UC_EmployeeTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\UC_OrdersTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\UC_OwnersTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\UC_ServicesTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\UC_SpecialtyTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForAdd\AddToDefectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForAdd\AddToEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForAdd\AddToServicessWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForEdit\EditCarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForEdit\EditClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForEdit\EditEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForEdit\EditOwnerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForEdit\EditServicesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForShowMoreInfo\InfoAboutClientSelectedCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForShowMoreInfo\InfoAboutOwnerSelectedCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForShowMoreInfo\ListCarSelectedClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForShowMoreInfo\ListDefectsSelectedCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForShowMoreInfo\ListOrdersSelectedClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForShowMoreInfo\QueriesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_6.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\iconBrand.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="jpg\bg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HelperClasses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\ServiceStationDB.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\ServiceStationDB_log.ldf">
+      <DependentUpon>ServiceStationDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.3.1.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.1\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.3.1.1\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.3.1.1\build\MaterialDesignThemes.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

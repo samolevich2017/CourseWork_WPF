@@ -1,0 +1,35 @@
+﻿<Window x:Class="CourseWork_Samolevich.Views.TablesUserControls.WindowForEdit.EditServicesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork_Samolevich.Views.TablesUserControls.WindowForEdit"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Редактирование услуги" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="400" Width="322">
+
+    <Grid Background="#d6d3db" Opacity="0.9">
+        <StackPanel Orientation="Vertical">
+            <!-- Заголовок -->
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Редактирование" FontFamily="Helvetica" FontSize="24" FontWeight="Medium" Margin="0 10 0 20" Foreground="Black" />
+            <!-- Наименование услуги -->
+            <TextBox Text="{Binding TitleServ, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Наименование услуги" materialDesign:HintAssist.HelperText="Введите наименование услуги" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Время выполнения -->
+            <TextBox Text="{Binding WorkHours, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Время работы" materialDesign:HintAssist.HelperText="Введите время работы" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Цена за предоставляемую услугу -->
+            <TextBox Text="{Binding PriceS, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Цена услуги (.руб)" materialDesign:HintAssist.HelperText="Введите цену за предоставление услуги" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Специальность которая занимается предоставлением этой услуги -->
+            <ComboBox ItemsSource="{Binding SpecialtiesCollection}" SelectedItem="{Binding SelectedSpecialty}" materialDesign:HintAssist.Hint="Выбор специальности" materialDesign:HintAssist.HelperText="Выберите специальность предоставляющую услугу" Foreground="Black" FontFamily="Helvetica"  Margin="30 0 31 0"/>
+            <!-- ID специальности -->
+            <TextBlock Text="{Binding StringFormat=ID специальности: {0}, Path=SelectedSpecialty.idSpecialty}" FontSize="14" FontFamily="Helvetica" Foreground="Black" FontWeight="Medium" Margin="30 30 86 0"/>
+            <!-- Кнопки Сохранить и Отменить -->
+            <StackPanel Orientation="Horizontal" Margin="25" HorizontalAlignment="Center">
+                <Button Content="Сохранить" FontSize="14" FontFamily="Helvetica" Foreground="Black" FontWeight="Bold" Background="WhiteSmoke" Command="{Binding EditServiceInTable}"/>
+                <Button Content="Отменить" FontSize="14" FontFamily="Helvetica" Foreground="Black" FontWeight="Bold" Background="WhiteSmoke" Margin="25 0 0 0" Command="{Binding CloseEditServiceWindow}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

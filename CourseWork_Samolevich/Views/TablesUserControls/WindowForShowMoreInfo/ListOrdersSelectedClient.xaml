@@ -1,0 +1,53 @@
+﻿<Window x:Class="CourseWork_Samolevich.Views.TablesUserControls.WindowForShowMoreInfo.ListOrdersSelectedClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork_Samolevich.Views.TablesUserControls.WindowForShowMoreInfo"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowStyle="ThreeDBorderWindow"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Перечень заказов"
+        Height="450" Width="900" Background="#9e66cc">
+    
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Width="900">
+                <Border Grid.Row="0" Height="30" Style="{StaticResource brdHeaderTableStyle}" ToolTip="Показаны данные о всех заказах клиента" HorizontalAlignment="Center" Margin="330 20 0 0">
+                    <TextBlock Text="Заказы клиента" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 0" FontSize="16" FontWeight="Bold" Foreground="WhiteSmoke"/>
+                </Border>
+                <Button Command="{Binding CloseListOrdersWindow}" ToolTip="Закрыть" Width="35" Height="15" HorizontalAlignment="Right" Padding="0" Margin="248 35 0 0" materialDesign:ButtonAssist.CornerRadius="15 0 0 0">
+                    <materialDesign:PackIcon Kind="KeyboardReturn" Width="20" Height="20" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                </Button>
+            </StackPanel>
+            <DataGrid
+                  Grid.Row="1"
+                  ItemsSource="{Binding SelectedClient_OrdersCollection, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedOrder}"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  FontSize="13" 
+                  FontFamily="Helvetica"
+                  AutoGenerateColumns="False"
+                  CanUserSortColumns="True"
+                  CanUserAddRows="False"
+                  Width="840"
+                  Height="350"
+                  HorizontalAlignment="Center">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Width="60" Binding="{Binding idOrder, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="ID Клиента" Width="120" Binding="{Binding idClient, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Время выполнения" Width="145" Binding="{Binding StringFormat=&#173;{0} ч., Path=WorkingHours, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Сумма заказа" Width="145" Binding="{Binding StringFormat=&#173;{0}₽, Path=TotalPrice, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridCheckBoxColumn
+                        ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                        EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+                        Binding="{Binding Stat, UpdateSourceTrigger=PropertyChanged}" Header="Статус выполнения" Width="145"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>

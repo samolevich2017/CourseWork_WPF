@@ -1,0 +1,41 @@
+﻿<Page x:Class="CourseWork_Samolevich.Views.MainScreenPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseWork_Samolevich.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainScreenPage">
+
+    <!-- Основная рабочая часть окна -->
+    <Grid Grid.Column="1"  x:Name="mainScreenGrid" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок экрана -->
+        <StackPanel x:Name="spHeaderPage" Grid.Row="0" Style="{DynamicResource spHeaderStyle}">
+            <TextBlock Text="Главная" HorizontalAlignment="Center" ToolTip="Вы находитесь на главном экране" Margin="35 5 0 0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="WhiteSmoke"/>
+        </StackPanel>
+
+        <!-- Контент -->
+        <Grid Grid.Row="1" x:Name="mainContent" Width="839" Height="545">
+            <Border x:Name="formDataClientBorder" Width="500" Height="200"  HorizontalAlignment="Center" Margin="50 0 0 0" Grid.Row="1" Grid.Column="0" BorderBrush="BlueViolet" BorderThickness="0.8" CornerRadius="20" Background="#2d2a42">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500">
+                    <TextBlock Text="Курсовой проект .NET Framework" FontSize="24" FontWeight="Bold" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
+                    <TextBlock Text="'Техобслуживание'" FontSize="18" FontWeight="Medium" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Группа: СПД821" FontSize="16" FontWeight="Normal" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="50 0 0 0"/>
+                    <TextBlock Text="Студент: Самолевич Иван" FontSize="16" FontWeight="Medium" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="50 0 0 0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Строка состояния -->
+        <StatusBar Grid.Row="2" VerticalAlignment="Bottom"  x:Name="statusBar" Opacity="0.8" Background="#383f68" Height="24">
+            <StatusBarItem x:Name="stbItem1" Content="Готов" FontSize="14" Margin="70 0 0 0" VerticalAlignment="Bottom"/>
+        </StatusBar>
+    </Grid>
+</Page>

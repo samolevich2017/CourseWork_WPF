@@ -1,0 +1,172 @@
+﻿<Window x:Class="CourseWork_Samolevich.Views.SelectDefectsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CourseWork_Samolevich"
+        mc:Ignorable="d"
+        Title="Выбор неисправностей" 
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="NoResize"
+        Height="450" 
+        Width="920"
+        WindowStartupLocation="CenterOwner">
+
+    <Window.DataContext>
+        <local:ApplicationViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FF8131B7" Offset="0"/>
+                <GradientStop Color="#FF491C68" Offset="1"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Заголовок экрана -->
+        <StackPanel x:Name="spHeaderPage" Grid.Row="0" Grid.ColumnSpan="3" Style="{DynamicResource spHeaderStyle}">
+            <TextBlock Text="Выбор неисправностей" HorizontalAlignment="Center" ToolTip="Вы находитесь на экране выбора неисправностей" Margin="0 5 0 0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" Foreground="WhiteSmoke"/>
+        </StackPanel>
+        <!-- Фильтр -->
+        <Border Grid.Row="1" Height="240" Grid.Column="0" BorderBrush="Black" BorderThickness="1" CornerRadius="15" Margin="5 10 5 0">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Фильтр" HorizontalAlignment="Center" ToolTip="Здесь вы можете настроить фильтрацию" Margin="0 5 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="WhiteSmoke"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Категория :" Margin="20 10 5 0" VerticalAlignment="Center" FontSize="14" FontFamily="Helvetica" Foreground="WhiteSmoke"/>
+                    <ComboBox materialDesign:ComboBoxAssist.ClassicMode="{Binding ElementName=ClassicModeCheckBox, Path=IsChecked}" Margin="10 5 0 8" HorizontalAlignment="Left" FontFamily="Helvetica">
+                        <ComboBoxItem IsSelected="True">
+                            Двигатель
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Ходовая
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Электроника
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Подвеска
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <Button Style="{StaticResource MaterialDesignFloatingActionLightButton}" ToolTip="Применить" Margin="0 100 0 15">
+                    <materialDesign:PackIcon Kind="Approval" Height="24" Width="24"/>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- Таблица с неисправностями -->
+        <DataGrid Grid.Row="1" Grid.Column="1" Width="280" Background="Transparent"
+          Margin="0 8 0 0"
+          ItemsSource="{Binding Clients}"
+          CanUserSortColumns="True"
+          CanUserAddRows="False"
+          materialDesign:DataGridAssist.CellPadding="4 2 2 2"
+          materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn
+                        Binding="{Binding IsSelected}"
+                        ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                        EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}">
+                    <DataGridCheckBoxColumn.Header>
+                        <Border
+                            Background="Transparent"
+                            Padding="6 0 6 0"
+                            HorizontalAlignment="Center">
+                            <CheckBox
+                                    HorizontalAlignment="Center"
+                                    DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext}"
+                                    IsChecked="{Binding IsAllItems3Selected}" />
+                        </Border>
+                    </DataGridCheckBoxColumn.Header>
+                </DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="ID" Width="60" CanUserResize="False" FontSize="14" IsReadOnly="True" Foreground="WhiteSmoke" Binding="{Binding idClient}"/>
+                <DataGridTextColumn Header="Неисправность" CanUserResize="True" FontSize="14" IsReadOnly="True" Foreground="WhiteSmoke" Binding="{Binding NameClient}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Таблица с требуемыми услугами для решения неисправностей -->
+        <DataGrid Grid.Row="1" Grid.Column="2" Width="325" Background="Transparent"
+          Margin="0 10 0 0"
+          ItemsSource="{Binding TestCol}"
+          CanUserSortColumns="True"
+          CanUserAddRows="False"
+          materialDesign:DataGridAssist.CellPadding="4 2 2 2"
+          materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="60" CanUserResize="False" FontSize="14" IsReadOnly="True" Foreground="WhiteSmoke"/>
+                <DataGridTextColumn Header="Услуга" Width="200" CanUserResize="True" FontSize="14" IsReadOnly="True" Foreground="WhiteSmoke"/>
+                <DataGridTextColumn Header="Цена" CanUserResize="True" FontSize="14" IsReadOnly="True" Foreground="WhiteSmoke"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1" CornerRadius="20" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180*"/>
+                    <ColumnDefinition Width="180*"/>
+                    <ColumnDefinition Width="180"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <!-- Заголовок -->
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Анализ формируемого заказа" HorizontalAlignment="Center" ToolTip="Здесь вы можете настроить фильтрацию" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="WhiteSmoke"/>
+                </StackPanel>
+                <!-- Поле - Всего неисправностей -->
+                <TextBlock Text="Всего неисправностей :" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" FontSize="16" Foreground="WhiteSmoke" FontFamily="Helvetica" Margin="20 0 0 0" VerticalAlignment="Center" />
+                <!-- Поле - Кол-во неисправностей -->
+                <TextBlock Text="X шт." Grid.Column="1" Grid.Row="1" FontSize="16" Foreground="WhiteSmoke" FontFamily="Helvetica" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <!-- Поле - Задействованно услуг -->
+                <TextBlock Text="Задействованно услуг :" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" FontSize="16" Foreground="WhiteSmoke" FontFamily="Helvetica" Margin="20 0 0 0" VerticalAlignment="Center" />
+                <!-- Поле - Кол-во услуг -->
+                <TextBlock Text="X шт." Grid.Column="1"  Grid.Row="2" FontSize="16" Foreground="WhiteSmoke" FontFamily="Helvetica" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <!-- Поле - Общая сумма заказа -->
+                <TextBlock Text="Общая сумма заказа :" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" FontSize="16" Foreground="WhiteSmoke" FontFamily="Helvetica" Margin="20 0 0 0" VerticalAlignment="Center" />
+                <!-- Поле - Сумма заказа -->
+                <TextBlock Text="XXX руб." Grid.Column="1" Grid.Row="3" FontSize="16" Foreground="WhiteSmoke" FontFamily="Helvetica" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <!-- Кнопка - Просмотреть выбранные неисправности -->
+                <Button x:Name="btnSeenSelectedDefects" Grid.Column="2" Grid.Row="1" Height="22" Width="110">
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="80*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="1" Kind="Eye" FontSize="9" Margin="45 0 -9 0" Width="13" Height="17"/>
+                        <TextBlock Grid.Column="0" Text="Просмотреть" Grid.ColumnSpan="2" Margin="0 0 10 0" FontSize="11" />
+                    </Grid>
+                </Button>
+                <!-- Кнопка - Просмотреть затрагиваемые услуги -->
+                <Button x:Name="btnSeenSelectedService" Grid.Column="2" Grid.Row="2" Height="22" Width="110">
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="80*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="1" Kind="Eye" FontSize="9" Margin="45 0 -9 0" Width="13" Height="17"/>
+                        <TextBlock Grid.Column="0" Text="Просмотреть" Grid.ColumnSpan="2" Margin="0 0 10 0" FontSize="11" />
+                    </Grid>
+                </Button>
+            </Grid>
+        </Border>
+        <!-- Кнопка - Подтвердить -->
+        <Button x:Name="btnCancel" Grid.Row="2" Grid.Column="2"  Width="130" Content="Отменить" materialDesign:ButtonAssist.CornerRadius="20" FontFamily="Helvetica" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10 10 200 10" Click="btnCancel_Click"/>
+        <!-- Кнопка - Подтвердить -->
+        <Button x:Name="btnAccess" Grid.Row="2" Grid.Column="2"  Width="130" Content="Подтвердить" materialDesign:ButtonAssist.CornerRadius="20" FontFamily="Helvetica" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10 10 35 10" />
+    </Grid>
+</Window>

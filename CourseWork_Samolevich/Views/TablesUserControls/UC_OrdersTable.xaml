@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="CourseWork_Samolevich.Views.TablesUserControls.UC_OrdersTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseWork_Samolevich.Views.TablesUserControls"
+             mc:Ignorable="d" 
+             Name="UC_Orders"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Border Grid.Row="0" Height="30" Style="{StaticResource brdHeaderTableStyle}" ToolTip="Показаны данные о всех заказах СТО" >
+                <TextBlock Text="Заказы" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 4 0 0" FontSize="16" FontWeight="Bold" Foreground="WhiteSmoke"/>
+            </Border>
+            <DataGrid
+                  Grid.Row="1"
+                  ItemsSource="{Binding OrdersCollection, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedOrder}"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  FontSize="13" 
+                  FontFamily="Helvetica"
+                  AutoGenerateColumns="False"
+                  CanUserSortColumns="True"
+                  CanUserAddRows="False"
+                  Width="840"
+                  Height="435"
+                  HorizontalAlignment="Center">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Width="60" Binding="{Binding idOrder, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="ID Клиента" Width="120" Binding="{Binding idClient, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Время выполнения" Width="145" Binding="{Binding StringFormat=&#173;{0} ч., Path=WorkingHours, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Сумма заказа" Width="145" Binding="{Binding StringFormat=&#173;{0}₽, Path=TotalPrice, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridCheckBoxColumn
+                        ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                        EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+                        Binding="{Binding Stat, UpdateSourceTrigger=PropertyChanged}" Header="Статус выполнения" Width="145"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</UserControl>

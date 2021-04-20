@@ -1,0 +1,20 @@
+﻿CourseWork_Samolevich
+
+
+winexe
+C#
+.cs
+C:\Программирование\C# .NET\Домашние работы\CourseWork\CourseWork_Samolevich\CourseWork_Samolevich\obj\Debug\
+CourseWork_Samolevich
+none
+false
+DEBUG;TRACE
+C:\Программирование\C# .NET\Домашние работы\CourseWork\CourseWork_Samolevich\CourseWork_Samolevich\App.xaml
+36-619085297
+2-60908042
+58-4605244
+24-1421743146
+MainWindow.xaml;Styles\StyleForControls.xaml;Views\AuthorizathionScreenPage.xaml;Views\CheckoutCarScreenPage.xaml;Views\CheckoutScreenPage.xaml;Views\ControlScreenPage.xaml;Views\MainScreenPage.xaml;Views\PickUpOrderPage.xaml;Views\SelectDefectsWindow.xaml;Views\TablesUserControls\UC_CarsTable.xaml;Views\TablesUserControls\UC_ClientTable.xaml;Views\TablesUserControls\UC_DefectsTable.xaml;Views\TablesUserControls\UC_EmployeeTable.xaml;Views\TablesUserControls\UC_OrdersTable.xaml;Views\TablesUserControls\UC_OwnersTable.xaml;Views\TablesUserControls\UC_ServicesTable.xaml;Views\TablesUserControls\UC_SpecialtyTable.xaml;Views\TablesUserControls\WindowForAdd\AddToDefectWindow.xaml;Views\TablesUserControls\WindowForAdd\AddToEmployeeWindow.xaml;Views\TablesUserControls\WindowForAdd\AddToServicessWindow.xaml;Views\TablesUserControls\WindowForEdit\EditCarWindow.xaml;Views\TablesUserControls\WindowForEdit\EditClientWindow.xaml;Views\TablesUserControls\WindowForEdit\EditEmployeeWindow.xaml;Views\TablesUserControls\WindowForEdit\EditOwnerWindow.xaml;Views\TablesUserControls\WindowForEdit\EditServicesWindow.xaml;Views\TablesUserControls\WindowForShowMoreInfo\InfoAboutClientSelectedCar.xaml;Views\TablesUserControls\WindowForShowMoreInfo\InfoAboutOwnerSelectedCar.xaml;Views\TablesUserControls\WindowForShowMoreInfo\ListCarSelectedClient.xaml;Views\TablesUserControls\WindowForShowMoreInfo\ListDefectsSelectedCar.xaml;Views\TablesUserControls\WindowForShowMoreInfo\ListOrdersSelectedClient.xaml;Views\TablesUserControls\WindowForShowMoreInfo\QueriesWindow.xaml;Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_1.xaml;Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_2.xaml;Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_4.xaml;Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_5.xaml;Views\TablesUserControls\WindowForShowMoreInfo\UC_ParametrsQuery\UC_Query_6.xaml;
+
+True
+

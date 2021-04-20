@@ -1,0 +1,199 @@
+﻿<Window x:Class="CourseWork_Samolevich.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CourseWork_Samolevich"
+        mc:Ignorable="d"
+        Title="Станция техобслуживания"
+        WindowStyle="ThreeDBorderWindow"
+        Height="640" 
+        Width="1068"
+        ResizeMode="CanMinimize"
+        Icon="icons/iconBrand.ico"  
+        Style="{DynamicResource WindowStyle}"
+        Loaded="Window_Loaded"
+        x:Name="WindM">
+
+    <Window.DataContext>
+        <local:ApplicationViewModel/>
+    </Window.DataContext>
+
+    <!-- Триггеры окна -->
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="buttonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="buttonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Window.Loaded" SourceName="WindM">
+            <BeginStoryboard Storyboard="{StaticResource OpenWindow}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+        <!-- Столбцы -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Основное содержимое -->
+        <Frame Grid.Column="1" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
+
+        <!-- Боковое меню слайд -->
+        <Grid Grid.Column="0" Grid.ColumnSpan="2" x:Name="SlideMenuGrid" Width="60" MaxWidth="185" HorizontalAlignment="Left" Background="Black">
+            <StackPanel>
+                <Grid x:Name="gridBtnMenu" Height="150" Background="Black">
+                    <Button x:Name="buttonCloseMenu"  Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="buttonCloseMenu_Click">
+                        <materialDesign:PackIcon Foreground="White" Kind="ArrowLeft" Width="30" Height="30"/>
+                    </Button>
+                    <Button x:Name="buttonOpenMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Click="buttonOpenMenu_Click">
+                        <materialDesign:PackIcon Foreground="White" Kind="Menu" Width="30" Height="30"/>
+                    </Button>
+                </Grid>
+                <StackPanel ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0 50 0 0">
+                    <!-- Кнопка - Главная -->
+                    <Button x:Name="btnMainScreen" Height="60" Cursor="Hand" Background="Transparent" BorderThickness="0" Command="{Binding OpenMainScreen}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="130"/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Grid.Column="0" Kind="Home" Width="25" Height="25" Margin="4 0 20 0" HorizontalAlignment="Left">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip x:Name="toolTipMenu" Content="Главный экран" Placement="RelativePoint" HorizontalOffset="40" VerticalOffset="-4" />
+                                </ToolTipService.ToolTip>
+                            </materialDesign:PackIcon>
+                            <TextBlock Grid.Column="1" Text="Главная" VerticalAlignment="Center" FontSize="16"/>
+                        </Grid>
+                    </Button>
+                    <!-- Кнопка - Управление -->
+                    <Button Height="60" Cursor="Hand" Background="Transparent" BorderThickness="0" Command="{Binding OpenAuthorizationScreen}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="130"/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Grid.Column="0" Kind="Assessment" Width="25" Height="25" Margin="4 0 20 0" HorizontalAlignment="Left">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip Content="Диспетчерская" Placement="RelativePoint" HorizontalOffset="40" VerticalOffset="-4"/>
+                                </ToolTipService.ToolTip>
+                            </materialDesign:PackIcon>
+                            <TextBlock Grid.Column="1" Text="Управление" VerticalAlignment="Center" FontSize="16"/>
+                        </Grid>
+                    </Button>
+                    
+                    <!-- Заказ -->
+                    <StackPanel x:Name="spListOrder" Orientation="Vertical" Height="59" MinHeight="59" MaxHeight="180">
+                        <StackPanel.Triggers>
+                            <!-- Событие наведения курсора мыши на кнопку Заказ - выпадает список действий -->
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height" Storyboard.TargetName="spListOrder"
+                                                         From="{Binding ElementName=spListOrder, Path=ActualHeight}"
+                                                         To="{Binding ElementName=spListOrder, Path=MaxHeight}"
+                                                         Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height" Storyboard.TargetName="spListOrder"
+                                                         From="{Binding ElementName=spListOrder, Path=ActualHeight}"
+                                                         To="{Binding ElementName=spListOrder, Path=MinHeight}"
+                                                         Duration="0:0:0.15"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </StackPanel.Triggers>
+                        
+                        <!-- Кнопка - Заказ -->
+                        <Button x:Name="btnOrder" Height="60" Cursor="Hand" Background="Transparent" BorderThickness="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="130"/>
+                                </Grid.ColumnDefinitions>
+                                <materialDesign:PackIcon Grid.Column="0" Kind="Assignment" Width="25" Height="25" Margin="4 0 20 0" HorizontalAlignment="Left">
+                                    <ToolTipService.ToolTip>
+                                        <ToolTip Content="Заказ" Placement="RelativePoint" HorizontalOffset="40" VerticalOffset="-4"/>
+                                    </ToolTipService.ToolTip>
+                                </materialDesign:PackIcon>
+                                <TextBlock Grid.Column="1" Text="Заказ" VerticalAlignment="Center" FontSize="16"/>
+                            </Grid>
+                        </Button>
+                        
+                        <!-- Кнопка - Заказать -->
+                        <Button Height="60" Cursor="Hand" Background="#383838" BorderThickness="0" BorderBrush="Transparent" Command="{Binding OpenCheckoutScreen}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="130"/>
+                                </Grid.ColumnDefinitions>
+                                <materialDesign:PackIcon Grid.Column="0" Kind="AssignmentReturnedOutline" Width="25" Height="25" Margin="4 0 20 0" HorizontalAlignment="Left">
+                                    <ToolTipService.ToolTip>
+                                        <ToolTip Content="Отдать авто" Placement="RelativePoint" HorizontalOffset="40" VerticalOffset="-4"/>
+                                    </ToolTipService.ToolTip>
+                                </materialDesign:PackIcon>
+                                <TextBlock Grid.Column="1" Text="Оформить" VerticalAlignment="Center" FontSize="16"/>
+                            </Grid>
+                        </Button>
+                        
+                        <!-- Кнопка - Забрать -->
+                        <Button Height="60" Cursor="Hand" Background="#383838" BorderThickness="0" BorderBrush="Transparent" Command="{Binding OpenPickUpOrderScreen}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="130"/>
+                                </Grid.ColumnDefinitions>
+                                <materialDesign:PackIcon Grid.Column="0" Kind="AssignmentTurnedIn" Width="25" Height="25" Margin="4 0 20 0" HorizontalAlignment="Left">
+                                    <ToolTipService.ToolTip>
+                                        <ToolTip Content="Забрать авто" Placement="RelativePoint" HorizontalOffset="40" VerticalOffset="-4"/>
+                                    </ToolTipService.ToolTip>
+                                </materialDesign:PackIcon>
+                                <TextBlock Grid.Column="1" Text="Забрать" VerticalAlignment="Center" FontSize="16"/>
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+
+                    <!-- Кнопка - О программе -->
+                    <Button Height="60" Cursor="Hand" Background="Transparent" BorderThickness="0" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="125"/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Grid.Column="0" Kind="Help" Width="25" Height="25" Margin="4 0 15 0" HorizontalAlignment="Left">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip Content="О программе" Placement="RelativePoint" HorizontalOffset="40" VerticalOffset="-4"/>
+                                </ToolTipService.ToolTip>
+                            </materialDesign:PackIcon>
+                            <TextBlock Grid.Column="1" Text="О программе" VerticalAlignment="Center" FontSize="16"/>
+                        </Grid>
+                    </Button>
+                    
+                    <!-- Кнопка - Выход -->
+                    <Button x:Name="btnExit" Height="60" Cursor="Hand" Background="Transparent" BorderThickness="0" Click="btnExit_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="130"/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Grid.Column="0" Kind="Logout" Width="25" Height="25" Margin="4 0 20 0" HorizontalAlignment="Left">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip Content="Завершить работу" Placement="RelativePoint" HorizontalOffset="40" VerticalOffset="-4"/>
+                                </ToolTipService.ToolTip>
+                            </materialDesign:PackIcon>
+                            <TextBlock Grid.Column="1" Text="Выход" VerticalAlignment="Center" FontSize="16"/>
+                        </Grid>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,41 @@
+﻿<Window x:Class="CourseWork_Samolevich.Views.TablesUserControls.WindowForEdit.EditEmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork_Samolevich.Views.TablesUserControls.WindowForEdit"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Редактирование сотрудника" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="530" Width="322">
+
+    <Grid Background="#d6d3db" Opacity="0.9">
+        <StackPanel Orientation="Vertical">
+            <!-- Заголовок -->
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Редактирование" FontFamily="Helvetica" FontSize="24" FontWeight="Medium" Margin="0 10 0 20" Foreground="Black" />
+            <!-- Фамилия сотрудника -->
+            <TextBox IsEnabled="False" Text="{Binding Surname, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Фамилия сотрудника" materialDesign:HintAssist.HelperText="Фамилия сотрудника (редактирование запрещено)" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Имя сотрудника -->
+            <TextBox IsEnabled="False" Text="{Binding Name, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Имя сотрудника" materialDesign:HintAssist.HelperText="Имя сотрудника (редактирование запрещено)" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Отчество сотрудника -->
+            <TextBox IsEnabled="False" Text="{Binding Patronymic, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Отчество сотрудника" materialDesign:HintAssist.HelperText="Отчество сотрудника (редактирование запрещено)" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Специальность -->
+            <ComboBox ItemsSource="{Binding SpecialtiesCollection}" SelectedItem="{Binding SelectedSpecialty}" materialDesign:HintAssist.Hint="Выбор специальности сотрудника" materialDesign:HintAssist.HelperText="Выберите специальность сотрудника" Foreground="Black" FontFamily="Helvetica"  Margin="30 0 31 0"/>
+            <!-- ID специальности -->
+            <TextBlock Text="{Binding StringFormat=ID специальности: {0}, Path=SelectedSpecialty.idSpecialty}" FontSize="14" FontFamily="Helvetica" Foreground="Black" FontWeight="Medium" Margin="30 30 86 0"/>
+            <!-- Разряд -->
+            <TextBox Text="{Binding Rank, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Разряд сотрудника" materialDesign:HintAssist.HelperText="Введите разряд сотрудника" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Стаж -->
+            <TextBox Text="{Binding Exp, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Стаж сотрудника" materialDesign:HintAssist.HelperText="Введите стаж сотрудника" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Уволен ли -->
+            <TextBlock Text="{Binding StringFormat=Уволен: {0}, Path=DissmisedEmp}" FontSize="14" FontFamily="Helvetica" Foreground="Black" FontWeight="Medium" Margin="30 0 86 0"/>
+            <!-- Кнопка добавить -->
+            <StackPanel Orientation="Horizontal" Margin="25" HorizontalAlignment="Center">
+                <Button Content="Сохранить" FontSize="14" FontFamily="Helvetica" Foreground="Black" FontWeight="Bold" Background="WhiteSmoke" Command="{Binding EditEmployeeIntoTable}"/>
+                <Button Content="Отменить" FontSize="14" FontFamily="Helvetica" Foreground="Black" FontWeight="Bold" Background="WhiteSmoke" Margin="25 0 0 0" Command="{Binding CloseEditEmployeeWindow}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="CourseWork_Samolevich.Views.TablesUserControls.WindowForEdit.EditClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWork_Samolevich.Views.TablesUserControls.WindowForEdit"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Редактирование клиента" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="530" Width="322">
+
+    <Grid Background="#d6d3db" Opacity="0.9">
+        <StackPanel Orientation="Vertical">
+            <!-- Заголовок -->
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Редактирование" FontFamily="Helvetica" FontSize="24" FontWeight="Medium" Margin="0 10 0 20" Foreground="Black" />
+            <!-- Фамилия клиента -->
+            <TextBox IsEnabled="False" Text="{Binding SelectedClient.SurnameClient, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Фамилия клиента" materialDesign:HintAssist.HelperText="Фамилия (редактирование запрещено)" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Имя клиента -->
+            <TextBox IsEnabled="False" Text="{Binding SelectedClient.NameClient, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Имя клиента" materialDesign:HintAssist.HelperText="Имя (редактирование запрещено)" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Отчество клиента -->
+            <TextBox IsEnabled="False" Text="{Binding SelectedClient.PatronymicClient, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Отчество клиента" materialDesign:HintAssist.HelperText="Отчество (редактирование запрещено)" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Прописка -->
+            <TextBox Text="{Binding RegistrationClient, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Прописка" materialDesign:HintAssist.HelperText="Прописка клиента" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <StackPanel Orientation="Horizontal">
+                <!-- ID автомобиля -->
+                <TextBlock Text="{Binding StringFormat=ID автомобиля: {0}, Path=SelectedClient.idCar}" FontSize="14" FontFamily="Helvetica" Foreground="Black" FontWeight="Medium" Margin="30 10 26 0"/>
+                <!-- Владелец ли клиент -->
+                <CheckBox x:Name="chIsOwner" Grid.Row="5" Margin="5 10 0 0" IsChecked="{Binding Client_isOwner}" TabIndex="2" Content="Владелец" ToolTip="Является ли владельцем?" Foreground="Black" FontSize="14" FontWeight="Medium" FontFamily="Helvetica" HorizontalAlignment="Right"/>
+            </StackPanel>
+            <!-- Дата обращения -->
+            <DatePicker SelectedDate="{Binding DateOfApplication_Client, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.HelperText="Дата обращения" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/>
+            <!-- Дата рождения material:DatePicker -->
+            <DatePicker IsEnabled="False" SelectedDate="{Binding SelectedClient.DateOfBirthday, ValidatesOnExceptions=true, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.HelperText="Дата рождения (редактирование запрещено)" Height="25" Margin="30 5 31 25" Foreground="Black" FontFamily="Helvetica"/> 
+            <!-- Кнопки Сохранить и Отменить -->
+            <StackPanel Orientation="Horizontal" Margin="25" HorizontalAlignment="Center">
+                <Button Content="Сохранить" FontSize="14" FontFamily="Helvetica" Foreground="Black" FontWeight="Bold" Background="WhiteSmoke" Command="{Binding EditClientInTable}"/>
+                <Button Content="Отменить" FontSize="14" FontFamily="Helvetica" Foreground="Black" FontWeight="Bold" Background="WhiteSmoke" Margin="25 0 0 0" Command="{Binding CloseWindowEditClient}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
